@@ -6,10 +6,10 @@ Automatic speech recognition for Puno Quechua (qxp) using Mozilla Common Voice d
 
 | Model | Scripted WER | Scripted CER | Spontaneous WER | Spontaneous CER |
 |-------|-------------:|-------------:|----------------:|----------------:|
-| ft_cpt_validated | **1.22%** | 0.19% | 13.59% | 1.74% |
-| ft_cpt_silver | 2.29% | 0.32% | **3.37%** | **0.44%** |
-| ft_xlsr_validated | 2.40% | 0.35% | 13.25% | 1.68% |
-| ft_xlsr_silver | 4.50% | 0.59% | 6.90% | 0.85% |
+| ft_cpt_validated | **1.19%** | 0.19% | 13.61% | 1.73% |
+| ft_cpt_silver | 2.11% | 0.30% | **3.15%** | **0.41%** |
+| ft_xlsr_validated | 2.06% | 0.30% | 13.58% | 1.71% |
+| ft_xlsr_silver | 4.36% | 0.57% | 6.68% | 0.81% |
 | omniASR LLM 300M v2 | 7.07% | 0.89% | 11.98% | 1.54% |
 | omniASR CTC 300M v2 | 24.47% | 3.05% | 20.22% | 2.43% |
 

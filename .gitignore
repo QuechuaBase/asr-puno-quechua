@@ -250,3 +250,5 @@ results/*/test/*
 results/*/test_spont/*
 results/omnilingual/*/*.tsv
 paper/*
+data/collao/*
+data/additional_data_16k/*

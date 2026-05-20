@@ -41,7 +41,8 @@ python /workspace/eval/fairseq/infer_patched.py \
     --criterion ctc \
     --labels ltr \
     --max-tokens 5000000 \
-    --post-process letter
+    --post-process letter \
+    --required-batch-size-multiple 1
 
 echo ""
 echo "Done. Results in $RESULTS_DIR"
