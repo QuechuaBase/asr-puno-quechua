@@ -30,8 +30,8 @@ Both datasets are from the [Mozilla Data Collective](https://datacollective.mozi
 |---|---|---|
 | **Speech type** | Speakers read pre-written sentences | Speakers respond naturally to prompts |
 | **Clips** | 25,382 | 7,286 |
-| **Validated** | 22,727 (89.5%) | 1,074 (14.7%) |
-| **Validated duration** | 31.2 hours | 5.2 hours |
+| **Validated** | 22,727 (89.5%) | 1,372 (18.8%) |
+| **Validated duration** | 31.2 hours | 5.5 hours |
 | **Avg. clip duration** | 4.937s | 17.45s |
 | **Speakers** | 81 | 110 |
 

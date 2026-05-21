@@ -1,6 +1,6 @@
 # Puno Quechua ASR — Inference Setup
 
-Transcribe Puno Quechua audio using `ft_cpt_validated` (1.22% WER on scripted speech, 13.59% on spontaneous/conversational).
+Transcribe Puno Quechua audio using `ft_cpt_validated` (1.19% WER on scripted speech, 13.61% on spontaneous/conversational).
 
 ---
 
@@ -24,9 +24,9 @@ cd asr-puno-quechua
 
 ```bash
 pip install huggingface_hub
-huggingface-cli download Adriatogi/wav2vec2-puno-quechua-ft-cpt-validated \
+huggingface-cli download QuechuaBase/xls-r-cpt-qxp-validated \
     checkpoint_best.pt \
-    --local-dir checkpoints/ft_cpt_validated/
+    --local-dir checkpoints/v2/ft_cpt_validated/
 ```
 
 **3. Create your `.env` file**
@@ -99,5 +99,5 @@ docker compose run asr-puno-quechua -c \
 
 - **Audio format**: WAV or MP3, any sample rate, mono or stereo — converted to 16kHz mono automatically
 - **GPU**: used automatically if available; falls back to CPU (slower but works)
-- **Accuracy**: 1.22% WER on scripted Puno Quechua; 13.59% on spontaneous speech
+- **Accuracy**: 1.19% WER on scripted Puno Quechua; 13.61% on spontaneous speech
 - **Checkpoint**: `--ckpt PATH` overrides the default checkpoint location if needed
