@@ -26,7 +26,7 @@ cd asr-puno-quechua
 pip install huggingface_hub
 huggingface-cli download QuechuaBase/xls-r-cpt-qxp-validated \
     checkpoint_best.pt \
-    --local-dir checkpoints/v2/ft_cpt_validated/
+    --local-dir checkpoints/ft_cpt_validated/
 ```
 
 **3. Create your `.env` file**

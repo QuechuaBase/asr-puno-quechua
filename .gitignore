@@ -252,3 +252,6 @@ results/omnilingual/*/*.tsv
 paper/*
 data/collao/*
 data/additional_data_16k/*
+data/prepare_collao_cpt.py
+eval_cpt_collao.sh
+finetune_cpt_collao.sh
