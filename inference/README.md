@@ -1,6 +1,8 @@
 # Puno Quechua ASR — Inference Setup
 
-Transcribe Puno Quechua audio using `ft_cpt_validated` (1.19% WER on scripted speech, 13.61% on spontaneous/conversational).
+> **Note:** These instructions are for the checkpoint from our **first evaluation** (`ft_cpt_validated`). The results reported in the paper come from a later evaluation with different models and splits. See the main [README](../README.md#results) for the current results and models, and [`results/first_evaluation/`](../results/first_evaluation/README.md) for the archived numbers quoted below.
+
+Transcribe Puno Quechua audio using `ft_cpt_validated` (1.19% WER on scripted speech, 13.61% on spontaneous/conversational, first evaluation).
 
 ---
 

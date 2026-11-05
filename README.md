@@ -4,19 +4,20 @@ Automatic speech recognition for Puno Quechua (qxp) using Mozilla Common Voice d
 
 ## Results
 
-| Model | Scripted WER | Scripted CER | Spontaneous WER | Spontaneous CER |
-|-------|-------------:|-------------:|----------------:|----------------:|
-| ft_cpt_validated | **1.19%** | 0.19% | 13.61% | 1.73% |
-| ft_cpt_silver | 2.11% | 0.30% | **3.15%** | **0.41%** |
-| ft_xlsr_validated | 2.06% | 0.30% | 13.58% | 1.71% |
-| ft_xlsr_silver | 4.36% | 0.57% | 6.68% | 0.81% |
-| omniASR LLM 300M v2 | 7.07% | 0.89% | 11.98% | 1.54% |
-| omniASR CTC 300M v2 | 24.47% | 3.05% | 20.22% | 2.43% |
+Word and character error rates (%) on the test partitions of the Puno Quechua corpus, as reported in the paper (Table 2). Also in [`results/paper_table2.csv`](results/paper_table2.csv).
 
-**CPT** = our continued pre-trained checkpoint; **XLSR** = public XLSR-128 300M baseline; **omniASR** = zero-shot Omnilingual baseline.  
-**Validated** = trained on gold-labeled data only; **Silver** = trained with additional auto-transcribed spontaneous speech.
+| Model | Params | SCS-26 WER | SCS-26 CER | SPS-4 WER | SPS-4 CER | OOD WER | OOD CER | Mean WER | Mean CER |
+|-------|-------:|-----------:|-----------:|----------:|----------:|--------:|--------:|---------:|---------:|
+| xls-r-300m (fine-tuned) | 315M | 16.5 | 3.2 | 16.7 | 2.9 | 28.4 | **4.3** | 20.5 | 3.5 |
+| xls-r-300m + CPT (fine-tuned) | 315M | **11.6** | **2.5** | **16.0** | **2.8** | 26.9 | 4.5 | **18.2** | **3.3** |
+| omniASR_CTC_300M | 325M | 43.3 | 8.1 | 33.3 | 5.6 | 41.0 | 6.0 | 39.2 | 6.6 |
+| omniASR_LLM_300M | 1.6B | 22.4 | 4.0 | 20.5 | 3.7 | **24.4** | 3.7 | 22.4 | 3.8 |
 
-Silver data trades ~1–2% scripted WER for ~10% spontaneous WER — worth it if your use case involves conversational speech.
+**SCS-26** = Common Voice Scripted Speech v26; **SPS-4** = Common Voice Spontaneous Speech v4; **OOD** = 0.27 h out-of-domain set from radio and social media, used for evaluation only. **CPT** = continued pre-training on the unlabelled corpus audio before fine-tuning; omniASR models are zero-shot baselines. Both datasets were split 80/10/10 (train/dev/test), and the fine-tuned models also use "silver" transcriptions of unvalidated speech generated with omniASR_LLM_7B.
+
+Models on HuggingFace: [xls-r-qxp-cv26-silver](https://huggingface.co/QuechuaBase/xls-r-qxp-cv26-silver), [xls-r-cpt-qxp-cv26-silver](https://huggingface.co/QuechuaBase/xls-r-cpt-qxp-cv26-silver).
+
+> The numbers from our first evaluation (different data version and splits) are archived in [`results/first_evaluation/`](results/first_evaluation/README.md) for reference. Do not compare them directly with the table above.
 
 ## Run inference
 
@@ -26,14 +27,15 @@ See [`inference/README.md`](inference/README.md) — clone the repo, download th
 
 Both datasets are from the [Mozilla Data Collective](https://datacollective.mozillafoundation.org/) and cover Puno Quechua (ISO 639-3: qxp). Licensed CC0-1.0.
 
-| | Scripted Speech 25.0 | Spontaneous Speech 3.0 |
+| | Scripted Speech 26.0 (SCS-26) | Spontaneous Speech 4.0 (SPS-4) |
 |---|---|---|
 | **Speech type** | Speakers read pre-written sentences | Speakers respond naturally to prompts |
-| **Clips** | 25,382 | 7,286 |
-| **Validated** | 22,727 (89.5%) | 1,372 (18.8%) |
-| **Validated duration** | 31.2 hours | 5.5 hours |
-| **Avg. clip duration** | 4.937s | 17.45s |
+| **Clips** | 25,423 | 7,305 |
+| **Recorded duration** | 34.88 h | 35.41 h |
+| **Validated duration** | 31.18 h | 5.18 h |
+| **Avg. clip duration** | 4.94 s | 17.45 s |
 | **Speakers** | 81 | 110 |
+| **Prompts** | 2,070 sentences | 150 questions |
 
 ## Setup (for training / evaluation)
 
